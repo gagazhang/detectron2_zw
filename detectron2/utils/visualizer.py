@@ -635,7 +635,7 @@ class Visualizer:
             # draw keypoint
             x, y, prob = keypoint
             if prob > _KEYPOINT_THRESHOLD:
-                self.draw_circle((x, y), color=_RED)
+                # self.draw_circle((x, y), color=_RED)
                 keypoint_name = self.metadata.keypoint_names[idx]
                 visible[keypoint_name] = (x, y)
 
@@ -651,8 +651,24 @@ class Visualizer:
         # draw shoulder box and hand box
         try:
             lh_x,lh_y = visible["left_wrist"]
-            offset = 20
-            self.draw_box((lh_x - offset, lh_y - offset, lh_x + offset, lh_y + offset))
+            offset = 40
+            rh_x,rh_y = visible["right_wrist"]
+            self.draw_box((lh_x - offset * 2, lh_y - offset, lh_x + offset * 2, lh_y + offset))
+            self.draw_box((rh_x - offset * 2, rh_y - offset, rh_x + offset * 2, rh_y + offset))
+        except KeyError:
+            pass
+
+        # draw body area
+
+        try:
+            ls_x, ls_y = visible["left_shoulder"]
+            rs_x, rs_y = visible["right_shoulder"]
+            lh_x, lh_y = visible["left_hip"]
+            rh_x, rh_y = visible["right_hip"]
+            x_data = [ls_x,rs_x,lh_x,rh_x]
+            y_data = [ls_y,rs_y,lh_y,rh_y]
+
+            self.draw_line(x_data,y_data,color=_RED)
         except KeyError:
             pass
 
