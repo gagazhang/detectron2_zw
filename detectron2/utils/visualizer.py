@@ -644,8 +644,18 @@ class Visualizer:
                 x0, y0 = visible[kp0]
                 x1, y1 = visible[kp1]
                 color = tuple(x / 255.0 for x in color)
-                self.draw_box((x0 - 10,y0 -10,x0 + 10 ,y0 + 10))
+                # self.draw_box((x0 - 10,y0 -10,x0 + 10 ,y0 + 10))
                 # self.draw_line([x0, x1], [y0, y1], color=color)
+
+
+        # draw shoulder box and hand box
+        try:
+            lh_x,lh_y = visible["left_hand"]
+            offset = 20
+            self.draw_box((lh_x - offset, lh_y - offset, lh_x + offset, lh_y + offset))
+        except KeyError:
+            pass
+
 
         # draw lines from nose to mid-shoulder and mid-shoulder to mid-hip
         # Note that this strategy is specific to person keypoints.
