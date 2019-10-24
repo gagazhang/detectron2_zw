@@ -650,7 +650,7 @@ class Visualizer:
 
         # draw shoulder box and hand box
         try:
-            lh_x,lh_y = visible["left_hand"]
+            lh_x,lh_y = visible["left_wrist"]
             offset = 20
             self.draw_box((lh_x - offset, lh_y - offset, lh_x + offset, lh_y + offset))
         except KeyError:
