@@ -644,7 +644,8 @@ class Visualizer:
                 x0, y0 = visible[kp0]
                 x1, y1 = visible[kp1]
                 color = tuple(x / 255.0 for x in color)
-                self.draw_line([x0, x1], [y0, y1], color=color)
+                self.draw_box((x0 - 10,y0 -10,x0 + 10 ,y0 + 10),color=_RED)
+                # self.draw_line([x0, x1], [y0, y1], color=color)
 
         # draw lines from nose to mid-shoulder and mid-shoulder to mid-hip
         # Note that this strategy is specific to person keypoints.
