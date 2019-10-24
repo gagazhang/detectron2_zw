@@ -649,27 +649,27 @@ class Visualizer:
         # draw lines from nose to mid-shoulder and mid-shoulder to mid-hip
         # Note that this strategy is specific to person keypoints.
         # For other keypoints, it should just do nothing
-        try:
-            ls_x, ls_y = visible["left_shoulder"]
-            rs_x, rs_y = visible["right_shoulder"]
-            mid_shoulder_x, mid_shoulder_y = (ls_x + rs_x) / 2, (ls_y + rs_y) / 2
-        except KeyError:
-            pass
-        else:
-            # draw line from nose to mid-shoulder
-            nose_x, nose_y = visible.get("nose", (None, None))
-            if nose_x is not None:
-                self.draw_line([nose_x, mid_shoulder_x], [nose_y, mid_shoulder_y], color=_RED)
-
-            try:
-                # draw line from mid-shoulder to mid-hip
-                lh_x, lh_y = visible["left_hip"]
-                rh_x, rh_y = visible["right_hip"]
-            except KeyError:
-                pass
-            else:
-                mid_hip_x, mid_hip_y = (lh_x + rh_x) / 2, (lh_y + rh_y) / 2
-                self.draw_line([mid_hip_x, mid_shoulder_x], [mid_hip_y, mid_shoulder_y], color=_RED)
+        # try:
+        #     ls_x, ls_y = visible["left_shoulder"]
+        #     rs_x, rs_y = visible["right_shoulder"]
+        #     mid_shoulder_x, mid_shoulder_y = (ls_x + rs_x) / 2, (ls_y + rs_y) / 2
+        # except KeyError:
+        #     pass
+        # else:
+        #     # draw line from nose to mid-shoulder
+        #     nose_x, nose_y = visible.get("nose", (None, None))
+        #     if nose_x is not None:
+        #         self.draw_line([nose_x, mid_shoulder_x], [nose_y, mid_shoulder_y], color=_RED)
+        #
+        #     try:
+        #         # draw line from mid-shoulder to mid-hip
+        #         lh_x, lh_y = visible["left_hip"]
+        #         rh_x, rh_y = visible["right_hip"]
+        #     except KeyError:
+        #         pass
+        #     else:
+        #         mid_hip_x, mid_hip_y = (lh_x + rh_x) / 2, (lh_y + rh_y) / 2
+        #         self.draw_line([mid_hip_x, mid_shoulder_x], [mid_hip_y, mid_shoulder_y], color=_RED)
         return self.output
 
     """
