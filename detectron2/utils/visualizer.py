@@ -667,7 +667,7 @@ class Visualizer:
             lh_x, lh_y = visible["left_hip"]
             rh_x, rh_y = visible["right_hip"]
             x_data = [ls_x,rs_x,rh_x,lh_x,ls_x]
-            y_data = [ls_x,rs_y,rh_y,lh_y,ls_x]
+            y_data = [ls_y,rs_y,rh_y,lh_y,ls_y]
 
             self.draw_line(x_data,y_data,color=_RED)
         except KeyError:
