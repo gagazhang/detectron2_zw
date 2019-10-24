@@ -563,6 +563,7 @@ class Visualizer:
         for i in range(num_instances):
             color = assigned_colors[i]
             if boxes is not None:
+                pass
                 # self.draw_box(boxes[i], edge_color=color)
 
             if masks is not None:
