@@ -668,8 +668,8 @@ class Visualizer:
             # 获取腕部的坐标
             lh_x, lh_y = visible["left_wrist"]
             rh_x, rh_y = visible["right_wrist"]
-            box_height = 200
-            box_width =  400
+            box_height = 100
+            box_width =  200
             offset = 100
 
             if(person_pos == "left"):
