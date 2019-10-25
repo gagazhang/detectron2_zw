@@ -662,14 +662,12 @@ class Visualizer:
         # draw body area
 
         try:
-            ls_x, ls_y = visible["left_shoulder"]
+            # ls_x, ls_y = visible["left_shoulder"]
             rs_x, rs_y = visible["right_shoulder"]
-            lh_x, lh_y = visible["left_hip"]
-            rh_x, rh_y = visible["right_hip"]
-            x_data = [ls_x,rs_x,rh_x,lh_x,ls_x]
-            y_data = [ls_y,rs_y,rh_y,lh_y,ls_y]
+            box_width = lh_x - rs_x
+            box_height = 100
 
-            self.draw_line(x_data,y_data,color=_RED)
+            self.draw_box((rs_x,rh_y,rs_x + box_width,rh_y + box_height))
         except KeyError:
             pass
 
