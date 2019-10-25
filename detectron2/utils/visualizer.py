@@ -703,16 +703,16 @@ class Visualizer:
         # except KeyError:
         #     pass
 
-        draw body area
+        # draw body area
         try:
             ls_x, ls_y = visible["left_shoulder"]
             rs_x, rs_y = visible["right_shoulder"]
             mid_shoulder_x, mid_shoulder_y = (ls_x + rs_x) / 2, (ls_y + rs_y) / 2
             edge_color = "g"
-            label = "With Safety White Coat"
+            label = "Pass: With Safety White Coat"
             if(mid_shoulder_x < 960):
                 edge_color = "r"
-                label = "Without Safety White Coat"
+                label = "Waring: Without Safety White Coat"
 
             box_width = ls_x - rs_x
             box_height = 200
