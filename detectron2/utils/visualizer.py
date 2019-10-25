@@ -649,7 +649,7 @@ class Visualizer:
                 # self.draw_line([x0, x1], [y0, y1], color=color)
 
 
-        # draw shoulder box and hand box
+        # draw hand box
         try:
             lh_x,lh_y = visible["left_wrist"]
             offset = 40
@@ -660,11 +660,10 @@ class Visualizer:
             pass
 
         # draw body area
-
         try:
-            # ls_x, ls_y = visible["left_shoulder"]
+            ls_x, ls_y = visible["left_shoulder"]
             rs_x, rs_y = visible["right_shoulder"]
-            box_width = lh_x - rs_x
+            box_width = ls_x - rs_x
             box_height = 100
 
             self.draw_box((rs_x,rh_y,rs_x + box_width,rh_y + box_height))
