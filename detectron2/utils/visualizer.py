@@ -659,7 +659,7 @@ class Visualizer:
             edge_color = "g"
             person_pos = "right"
             label = "Pass: With Safety Gloves"
-            if (mid_shoulder_x < 960):
+            if (mid_shoulder_x < 1000):
                 edge_color = "r"
                 label = "Waring: Without Safety Gloves"
                 person_pos = "left"
@@ -668,13 +668,14 @@ class Visualizer:
             # 获取腕部的坐标
             lh_x, lh_y = visible["left_wrist"]
             rh_x, rh_y = visible["right_wrist"]
-            box_height = 50
-            box_width =  100
+            box_height = 200
+            box_width =  400
+            offset = 100
 
             if(person_pos == "left"):
                 # 如果人在左边
                 # 处理右手
-                box_x,box_y = rh_x ,rh_y - 20
+                box_x,box_y = rh_x ,rh_y - offset
                 text_pos = (box_x,box_y)
                 self.draw_box(box_coord = (box_x,box_y,box_x + box_width,box_y + box_height),edge_color=edge_color,alpha=0.8)
                 self.draw_text(
@@ -686,7 +687,7 @@ class Visualizer:
                         )
 
                 # 处理左手
-                box_x, box_y = lh_x - box_width, lh_y - 20
+                box_x, box_y = lh_x - box_width, lh_y - offset
                 text_pos = (box_x, box_y)
                 self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
                               alpha=0.8)
