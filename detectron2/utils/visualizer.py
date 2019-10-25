@@ -672,44 +672,47 @@ class Visualizer:
             box_width =  200
             offset = 100
 
-            if(person_pos == "left"):
-                # 如果人在左边
-                # 处理右手
-                box_x,box_y = rh_x ,rh_y - offset
-                text_pos = (box_x,box_y)
-                self.draw_box(box_coord = (box_x,box_y,box_x + box_width,box_y + box_height),edge_color=edge_color,alpha=0.8)
-                self.draw_text(
-                            label,
-                            text_pos,
-                            color=edge_color,
-                            horizontal_alignment=horiz_align,
-                            font_size=self._default_font_size * 0.6,
-                        )
+            # 如果人在左边
+            # 处理右手
+            box_x, box_y = rh_x, rh_y - offset
+            text_pos = (box_x, box_y)
+            self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
+                          alpha=0.8)
+            self.draw_text(
+                label,
+                text_pos,
+                color=edge_color,
+                horizontal_alignment=horiz_align,
+                font_size=self._default_font_size * 0.6,
+            )
 
-                # 处理左手
-                box_x, box_y = lh_x - box_width, lh_y - offset
-                text_pos = (box_x, box_y)
-                self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
-                              alpha=0.8)
-                self.draw_text(
-                    label,
-                    text_pos,
-                    color=edge_color,
-                    horizontal_alignment=horiz_align,
-                    font_size=self._default_font_size * 0.6,
-                )
+            # 处理左手
+            box_x, box_y = lh_x - box_width, lh_y - offset
+            text_pos = (box_x, box_y)
+            self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
+                          alpha=0.8)
+            self.draw_text(
+                label,
+                text_pos,
+                color=edge_color,
+                horizontal_alignment=horiz_align,
+                font_size=self._default_font_size * 0.6,
+            )
+
+            # if(person_pos == "left"):
 
 
-                pass
 
-            else:
-                # 如果人在右边
-
-                # 处理左手
-
-                # 处理右手
-
-                pass
+            #     pass
+            #
+            # else:
+            #     # 如果人在右边
+            #
+            #     # 处理右手
+            #
+            #     # 处理左手
+            #
+            #     pass
 
 
 
