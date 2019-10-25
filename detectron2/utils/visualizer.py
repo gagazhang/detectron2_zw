@@ -22,6 +22,7 @@ _LARGE_MASK_AREA_THRESH = 120000
 _OFF_WHITE = (1.0, 1.0, 240.0 / 255)
 _BLACK = (0, 0, 0)
 _RED = (1.0, 0, 0)
+_GREEN = (0,1.0,0)
 
 _KEYPOINT_THRESHOLD = 0.05
 
@@ -650,23 +651,28 @@ class Visualizer:
 
 
         # draw hand box
-        try:
-            lh_x,lh_y = visible["left_wrist"]
-            offset = 40
-            rh_x,rh_y = visible["right_wrist"]
-            self.draw_box((lh_x - offset * 2, lh_y - offset, lh_x + offset * 2, lh_y + offset))
-            self.draw_box((rh_x - offset * 2, rh_y - offset, rh_x + offset * 2, rh_y + offset))
-        except KeyError:
-            pass
+        # try:
+        #     lh_x,lh_y = visible["left_wrist"]
+        #     offset = 40
+        #     rh_x,rh_y = visible["right_wrist"]
+        #     self.draw_box((lh_x - offset * 2, lh_y - offset, lh_x + offset * 2, lh_y + offset))
+        #     self.draw_box((rh_x - offset * 2, rh_y - offset, rh_x + offset * 2, rh_y + offset))
+        # except KeyError:
+        #     pass
 
         # draw body area
         try:
             ls_x, ls_y = visible["left_shoulder"]
             rs_x, rs_y = visible["right_shoulder"]
+            mid_shoulder_x, mid_shoulder_y = (ls_x + rs_x) / 2, (ls_y + rs_y) / 2
+            edge_color = "g"
+            if(mid_shoulder_x < 960):
+                edge_color = "r"
             box_width = ls_x - rs_x
-            box_height = 100
+            box_height = 200
 
-            self.draw_box((rs_x,rs_y,rs_x + box_width,rs_y + box_height))
+
+            self.draw_box(box_coord = (rs_x,rs_y,rs_x + box_width,rs_y + box_height),edge_color=edge_color)
         except KeyError:
             pass
 
