@@ -671,8 +671,8 @@ class Visualizer:
             # 已经调整好的距离
             # box_height = 100
             # box_width = 200
-            box_height = 120
-            box_width = 120
+            box_height = 240
+            box_width = 240
             offset = 100
 
             # 如果人在左边
