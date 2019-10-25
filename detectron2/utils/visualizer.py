@@ -666,7 +666,7 @@ class Visualizer:
             box_width = ls_x - rs_x
             box_height = 100
 
-            self.draw_box((rs_x,rh_y,rs_x + box_width,rh_y + box_height))
+            self.draw_box((rs_x,rs_y,rs_x + box_width,rs_y + box_height))
         except KeyError:
             pass
 
