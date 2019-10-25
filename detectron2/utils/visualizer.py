@@ -651,44 +651,99 @@ class Visualizer:
 
 
         # draw hand box
-        # try:
-        #     lh_x,lh_y = visible["left_wrist"]
-        #     offset = 40
-        #     rh_x,rh_y = visible["right_wrist"]
-        #     self.draw_box((lh_x - offset * 2, lh_y - offset, lh_x + offset * 2, lh_y + offset))
-        #     self.draw_box((rh_x - offset * 2, rh_y - offset, rh_x + offset * 2, rh_y + offset))
-        # except KeyError:
-        #     pass
-
-        # draw body area
         try:
+            # 判断人员在左边，还是右边
             ls_x, ls_y = visible["left_shoulder"]
             rs_x, rs_y = visible["right_shoulder"]
             mid_shoulder_x, mid_shoulder_y = (ls_x + rs_x) / 2, (ls_y + rs_y) / 2
             edge_color = "g"
-            label = "With Safety White Coat"
-            if(mid_shoulder_x < 960):
+            person_pos = "right"
+            label = "Pass: With Safety Gloves"
+            if (mid_shoulder_x < 960):
                 edge_color = "r"
-                label = "Without Safety White Coat"
-            box_width = ls_x - rs_x
-            box_height = 200
-            text_pos = (rs_x,rs_y)
+                label = "Waring: Without Safety Gloves"
+                person_pos = "left"
             horiz_align = "left"
-            font_size =self._default_font_size
 
+            lh_x, lh_y = visible["left_wrist"]
+            rh_x, rh_y = visible["right_wrist"]
+            box_height = 20
+            box_width =  40
 
-            self.draw_text(
+            if(person_pos == "left"):
+                # 如果人在左边
+                # 处理右手
+                box_x,box_y = rs_x ,rs_y - 10
+                text_pos = (box_x,box_y)
+                self.draw_box(box_coord = (box_x,box_y,box_x + box_width,box_y + box_height),edge_color=edge_color,alpha=0.8)
+                self.draw_text(
+                            label,
+                            text_pos,
+                            color=edge_color,
+                            horizontal_alignment=horiz_align,
+                            font_size=self._default_font_size * 0.6,
+                        )
+
+                # 处理左手
+                box_x, box_y = ls_x - box_width, ls_y - 10
+                text_pos = (box_x, box_y)
+                self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
+                              alpha=0.8)
+                self.draw_text(
                     label,
                     text_pos,
                     color=edge_color,
                     horizontal_alignment=horiz_align,
-                    font_size=font_size,
+                    font_size=self._default_font_size * 0.6,
                 )
 
 
-            self.draw_box(box_coord = (rs_x,rs_y,rs_x + box_width,rs_y + box_height),edge_color=edge_color,alpha=0.8)
+                pass
+
+            else:
+                # 如果人在右边
+
+                # 处理左手
+
+                # 处理右手
+
+                pass
+
+
+
         except KeyError:
             pass
+
+        # draw body area
+        # try:
+        #     ls_x, ls_y = visible["left_shoulder"]
+        #     rs_x, rs_y = visible["right_shoulder"]
+        #     mid_shoulder_x, mid_shoulder_y = (ls_x + rs_x) / 2, (ls_y + rs_y) / 2
+        #     edge_color = "g"
+        #     label = "With Safety White Coat"
+        #     if(mid_shoulder_x < 960):
+        #         edge_color = "r"
+        #         label = "Without Safety White Coat"
+        #
+        #     box_width = ls_x - rs_x
+        #     box_height = 200
+        #     text_pos = (rs_x,rs_y)
+        #     horiz_align = "left"
+        #     font_size =self._default_font_size
+        #
+        #
+        #     self.draw_text(
+        #             label,
+        #             text_pos,
+        #             color=edge_color,
+        #             horizontal_alignment=horiz_align,
+        #             font_size=font_size,
+        #         )
+        #
+        #
+        #     self.draw_box(box_coord = (rs_x,rs_y,rs_x + box_width,rs_y + box_height),edge_color=edge_color,alpha=0.8)
+        # except KeyError:
+        #     pass
 
 
         # draw lines from nose to mid-shoulder and mid-shoulder to mid-hip
@@ -751,7 +806,7 @@ class Visualizer:
             text,
             size=font_size * self.output.scale,
             family="sans-serif",
-            bbox={"facecolor": "black", "alpha": 0.8, "pad": 0.7, "edgecolor": "none"},
+            bbox={"facecolor": "black", "alpha": 0.0, "pad": 0.7, "edgecolor": "none"},
             verticalalignment="top",
             horizontalalignment=horizontal_alignment,
             color=color,
