@@ -673,7 +673,7 @@ class Visualizer:
             # box_width = 200
             box_height = 240
             box_width = 240
-            offset = 100
+            offset = 150
 
             # 如果人在左边
             # 处理右手
