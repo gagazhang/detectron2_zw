@@ -666,13 +666,27 @@ class Visualizer:
             rs_x, rs_y = visible["right_shoulder"]
             mid_shoulder_x, mid_shoulder_y = (ls_x + rs_x) / 2, (ls_y + rs_y) / 2
             edge_color = "g"
+            label = "With Safety White Coat"
             if(mid_shoulder_x < 960):
                 edge_color = "r"
+                label = "Without Safety White Coat"
             box_width = ls_x - rs_x
             box_height = 200
+            text_pos = (rs_x,rs_y)
+            horiz_align = "left"
+            font_size =self._default_font_size
 
 
-            self.draw_box(box_coord = (rs_x,rs_y,rs_x + box_width,rs_y + box_height),edge_color=edge_color)
+            self.draw_text(
+                    label,
+                    text_pos,
+                    color=edge_color,
+                    horizontal_alignment=horiz_align,
+                    font_size=font_size,
+                )
+
+
+            self.draw_box(box_coord = (rs_x,rs_y,rs_x + box_width,rs_y + box_height),edge_color=edge_color,alpha=0.8)
         except KeyError:
             pass
 
@@ -763,7 +777,7 @@ class Visualizer:
         width = x1 - x0
         height = y1 - y0
 
-        linewidth = max(self._default_font_size / 4, 1)
+        linewidth = max(self._default_font_size / 4, 3)
 
         self.output.ax.add_patch(
             mpl.patches.Rectangle(
