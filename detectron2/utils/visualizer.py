@@ -673,7 +673,7 @@ class Visualizer:
             # box_width = 200
             box_height = 240
             box_width = 240
-            offset = 120
+            offset = 170
 
             if(person_pos == "left"):
                 # 如果人在左边
