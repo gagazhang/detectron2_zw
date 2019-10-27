@@ -674,12 +674,14 @@ class Visualizer:
             box_height = 240
             box_width = 240
             offset = 170
+            font_ratio = 1.0
+            font_pos_offset = 20
 
             if(person_pos == "left"):
                 # 如果人在左边
                 # 处理右手
                 box_x, box_y = rh_x, rh_y - offset
-                text_pos = (box_x, box_y)
+                text_pos = (box_x + font_pos_offset, box_y +font_pos_offset)
                 self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
                               alpha=0.8)
                 self.draw_text(
@@ -687,12 +689,12 @@ class Visualizer:
                     text_pos,
                     color=edge_color,
                     horizontal_alignment=horiz_align,
-                    font_size=self._default_font_size * 0.6,
+                    font_size=self._default_font_size * font_ratio,
                 )
 
                 # 处理左手
                 box_x, box_y = lh_x - box_width, lh_y - offset
-                text_pos = (box_x, box_y)
+                text_pos = (box_x + font_pos_offset, box_y + font_pos_offset)
                 self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
                               alpha=0.8)
                 self.draw_text(
@@ -700,14 +702,14 @@ class Visualizer:
                     text_pos,
                     color=edge_color,
                     horizontal_alignment=horiz_align,
-                    font_size=self._default_font_size * 0.6,
+                    font_size=self._default_font_size * font_ratio,
                 )
 
             else:
                 # 如果人在右边
                 # 处理右手
                 box_x, box_y = rh_x - 50, rh_y - offset
-                text_pos = (box_x, box_y)
+                text_pos = (box_x + font_pos_offset, box_y + font_pos_offset)
                 self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
                               alpha=0.8)
                 self.draw_text(
@@ -715,12 +717,12 @@ class Visualizer:
                     text_pos,
                     color=edge_color,
                     horizontal_alignment=horiz_align,
-                    font_size=self._default_font_size * 0.6,
+                    font_size=self._default_font_size * font_ratio,
                 )
 
                 # 处理左手
                 box_x, box_y = lh_x - box_width, lh_y - offset
-                text_pos = (box_x, box_y)
+                text_pos = (box_x + font_pos_offset, box_y + font_pos_offset)
                 self.draw_box(box_coord=(box_x, box_y, box_x + box_width, box_y + box_height), edge_color=edge_color,
                               alpha=0.8)
                 self.draw_text(
@@ -728,7 +730,7 @@ class Visualizer:
                     text_pos,
                     color=edge_color,
                     horizontal_alignment=horiz_align,
-                    font_size=self._default_font_size * 0.6,
+                    font_size=self._default_font_size * font_ratio,
                 )
 
 
